@@ -3,16 +3,36 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GUI {
 
+	/*
+	 * This simple application creates a GUI
+	 * With three GUI objects:
+	 *  a. Three text fields
+	 *  b. Two button actions
+	 *  
+	 *  This was authored by Bingnan (Kent) Li
+	 *  Updates made by Mike Little
+	 *  
+	 *  This is part of our Course Management System team project
+	 *  
+	 */
+	//declare class variables heres
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtFld_StudID;
+	private JTextField txtFld_StudFNme;
+	private JTextField txtFld_StudLstNme;
 
+	//----------------------------------------------------------------------------------------
 	/**
 	 * Launch the application.
+	 * This is the main method! 
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -27,15 +47,19 @@ public class GUI {
 		});
 	}
 
+	//----------------------------------------------------------------------------------------
+	
 	/**
 	 * Create the application.
 	 */
 	public GUI() {
 		initialize();
 	}
-
+	
+	//----------------------------------------------------------------------------------------
 	/**
 	 * Initialize the contents of the frame.
+	 * This sets up the frame contents of the GUI.
 	 */
 	private void initialize() {
 		frame = new JFrame();
@@ -43,43 +67,68 @@ public class GUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+	    //////These are the field labels.
+		
+		//this is the label "Student Information"
 		JLabel lblNewLabel = new JLabel("Student Information");
 		lblNewLabel.setBounds(139, 23, 148, 16);
 		frame.getContentPane().add(lblNewLabel);
 		
+		//this is the label "Student  ID"
 		JLabel lblNewLabel_1 = new JLabel("Student  ID");
 		lblNewLabel_1.setBounds(27, 69, 99, 16);
 		frame.getContentPane().add(lblNewLabel_1);
 		
+		//this is the label "Student First Name"
 		JLabel lblNewLabel_2 = new JLabel("Student First Name");
 		lblNewLabel_2.setBounds(27, 111, 139, 16);
 		frame.getContentPane().add(lblNewLabel_2);
 		
+		//this is the label "Student Last Name"
 		JLabel lblNewLabel_3 = new JLabel("Student Last Name");
 		lblNewLabel_3.setBounds(27, 153, 139, 16);
 		frame.getContentPane().add(lblNewLabel_3);
 		
-		textField = new JTextField();
-		textField.setBounds(223, 64, 130, 26);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(223, 106, 130, 26);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+	    //////These are the text-fields for the entry of text
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(223, 148, 130, 26);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		//this is the text entry field for "Student  ID"
+		txtFld_StudID = new JTextField();
+		txtFld_StudID.setBounds(223, 64, 169, 26);
+		frame.getContentPane().add(txtFld_StudID);
+		txtFld_StudID.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Cancel");
-		lblNewLabel_4.setBounds(39, 209, 61, 16);
-		frame.getContentPane().add(lblNewLabel_4);
+		//this is the text entry field for "Student  ID"
+		txtFld_StudFNme = new JTextField();
+		txtFld_StudFNme.setBounds(223, 106, 169, 26);
+		frame.getContentPane().add(txtFld_StudFNme);
+		txtFld_StudFNme.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Add");
-		lblNewLabel_5.setBounds(267, 209, 61, 16);
-		frame.getContentPane().add(lblNewLabel_5);
+		//this is the text entry field for "Student  ID"
+		txtFld_StudLstNme = new JTextField();
+		txtFld_StudLstNme.setBounds(223, 148, 169, 26);
+		frame.getContentPane().add(txtFld_StudLstNme);
+		txtFld_StudLstNme.setColumns(10);
+		
+		JButton btnAdd = new JButton("Add");
+		btnAdd.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("this is the Add Button");
+			}
+		});
+		btnAdd.setBounds(275, 204, 117, 29);
+		frame.getContentPane().add(btnAdd);
+		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("this is the cancel Button");
+			}
+		});
+		btnCancel.setBounds(27, 204, 117, 29);
+		frame.getContentPane().add(btnCancel);
 	}
-}
+	//----------------------------------------------------------------------------------------
+} //close class GUI
