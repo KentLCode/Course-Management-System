@@ -98,13 +98,13 @@ public class GUI {
 		frame.getContentPane().add(txtFld_StudID);
 		txtFld_StudID.setColumns(10);
 		
-		//this is the text entry field for "Student  ID"
+		//this is the text entry field for "Student  first Name"
 		txtFld_StudFNme = new JTextField();
 		txtFld_StudFNme.setBounds(223, 106, 169, 26);
 		frame.getContentPane().add(txtFld_StudFNme);
 		txtFld_StudFNme.setColumns(10);
 		
-		//this is the text entry field for "Student  ID"
+		//this is the text entry field for "Student  Last Name"
 		txtFld_StudLstNme = new JTextField();
 		txtFld_StudLstNme.setBounds(223, 148, 169, 26);
 		frame.getContentPane().add(txtFld_StudLstNme);
@@ -114,7 +114,22 @@ public class GUI {
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				System.out.println("this is the Add Button");
+				
+				//retrieve the student ID and display to the console
+				String StudID = txtFld_StudID.getText();
+				System.out.print("This is the StudentID: ");
+				System.out.println(StudID );
+				
+				//retrieve the student ID and display to the console
+				String StudFNme = txtFld_StudFNme.getText();
+				System.out.print("This is the StudentID: ");
+				System.out.println(StudFNme );				
+				
+				//retrieve the student ID and display to the console
+				String StudLstNme = txtFld_StudLstNme.getText();
+				System.out.print("This is the StudentID: ");
+				System.out.println(StudLstNme );				
+				
 			}
 		});
 		btnAdd.setBounds(275, 204, 117, 29);
@@ -124,7 +139,8 @@ public class GUI {
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				System.out.println("this is the cancel Button");
+				System.out.print("this is the cancel Button");
+				
 			}
 		});
 		btnCancel.setBounds(27, 204, 117, 29);
