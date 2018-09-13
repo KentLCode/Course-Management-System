@@ -185,7 +185,7 @@ public class USR101_java_gui_mysql_db {
 					//String sql="insert into Participants values"
 					//		+"("+\'StudID\'+","+ \'StudFNme\'+","+ \'StudLstNme\'+",+"null"+")";
 					
-					String sql= "insert into participants values( \'s99058740\', \'bob', 'Klein', null)";
+					String sql= "insert into participants values( \'s99058711\', \'kate', 'Paul', null)";
 					PreparedStatement statement=connect.prepareStatement(sql);
 					
 					//create a variable to execute the query
