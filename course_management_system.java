@@ -21,7 +21,7 @@ public class course_management_system {
 			//2
 			Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
 
-			System.out.println("******Course Management Sysytem prython 00******");
+			System.out.println("******Course Management Sysytem Prototype 00******");
 			System.out.println("Enter 1 to show  student information:");
 			System.out.println("Enter 2 to show  lecturer information:");
 			System.out.println("Enter 3 to show  course information:");
