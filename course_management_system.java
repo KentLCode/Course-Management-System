@@ -10,7 +10,7 @@ public class course_management_system {
 	public static void main(String[] args) throws Exception{
 		
 		while (true) {
-			final String URL = "jdbc:mysql://127.0.0.1:3306/course_management_system?serverTimezone=UTC";  //replace CMS with your own database schema name	
+			final String URL = "jdbc:mysql://127.0.0.1:3306/course_management_system?serverTimezone=UTC";  	
 			final String USER= "root";  //mysql workbench account
 			final String PASSWORD = "Isys1117_project_cms"; //mysql workbench password
 
@@ -25,7 +25,7 @@ public class course_management_system {
 			System.out.println("Enter 1 to show  student information:");
 			System.out.println("Enter 2 to show  lecturer information:");
 			System.out.println("Enter 3 to show  course information:");
-			System.out.println("Enter 4 to add a course:");
+			System.out.println("Enter 4 to add a new course:");
 			System.out.println("Enter 5 to look for student grade:");
 			System.out.println("Enter 6 to leave system:");
 			
@@ -34,12 +34,14 @@ public class course_management_system {
 
 			Scanner sc = new Scanner (System.in);
 			int choice = sc.nextInt();
+			Statement stat = conn.createStatement();
+			ResultSet re;
 
 
 			switch(choice) {
 			case 1:
-				Statement stat = conn.createStatement();
-				ResultSet re = stat.executeQuery("select * from Student");
+				
+			re = stat.executeQuery("select * from Student");
 				
 				// print output
 				while(re.next()) {
@@ -48,22 +50,22 @@ public class course_management_system {
 				break;
 				
 			case 2:
-				Statement stat2 = conn.createStatement();
-				ResultSet re2 = stat2.executeQuery("select * from Lecturer");
+				 stat = conn.createStatement();
+				 re = stat.executeQuery("select * from Lecturer");
 				
 				// print output
-				while(re2.next()) {
-					System.out.println("User Name: " + re2.getString("UserName")+"," + "Lecturer Name: " +re2.getString("FirstName")+ " " + re2.getString("LastName"));	
+				while(re.next()) {
+					System.out.println("User Name: " + re.getString("UserName")+"," + "Lecturer Name: " +re.getString("FirstName")+ " " + re.getString("LastName"));	
 					
 				}
 				break;
 			case 3:
-				Statement stat3 = conn.createStatement();
-				ResultSet re3 = stat3.executeQuery("select * from course");
+				 stat = conn.createStatement();
+				 re = stat.executeQuery("select * from course");
 				
 				// print output
-				while(re3.next()) {
-					System.out.println("Course Code: " + re3.getString("CourseCode")+"," +"Course Title: : "+ re3.getString("CourseTitle")+ " ," + "Prerequisite Courses: "+ re3.getString("prerequisite"));	
+				while(re.next()) {
+					System.out.println("Course Code: " + re.getString("CourseCode")+"," +"Course Title: : "+ re.getString("CourseTitle")+ " ," + "Prerequisite Courses: "+ re.getString("prerequisite"));	
 					
 				}
 				break;
@@ -93,19 +95,19 @@ public class course_management_system {
 				System.out.println("Course added successfully");
 				
 			case 5:
-				Statement stat5 = conn.createStatement();
+				 stat = conn.createStatement();
 				System.out.println("Enter student ID:");
 				String studentID= sc.next();
 				
 				
-				ResultSet re5 = stat5.executeQuery("select * from student, course,enrolled_result ");
+				 re = stat.executeQuery("select * from student, course,enrolled_result ");
 				
 				// print output
-				while(re5.next()) {
-					if(re5.getString("StudentID").equalsIgnoreCase(studentID))
+				while(re.next()) {
+					if(re.getString("StudentID").equalsIgnoreCase(studentID))
 							
 					
-							System.out.println(re5.getString("FirstName")+"Course title: " + re5.getString("courseTitle")+"," + "Result: " + re5.getString("ResultScore"));
+							System.out.println(re.getString("FirstName")+"Course title: " + re.getString("courseTitle")+"," + "Result: " + re.getString("ResultScore"));
 					}
 						break;
 				
