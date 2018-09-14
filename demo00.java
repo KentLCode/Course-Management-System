@@ -43,11 +43,14 @@ public class demo00 {
 			
 			while (re.next()) {
 				if(userName.equals(re.getString("UserName"))& (password.equals(re.getString("password")))){
-					System.out.println("You have logged in");
+					System.out.println("Lecture logged in");
 				}
 			}
 			
 			
+		} else {
+			System.out.println("Wrong User name or Password");
+			System.exit(0);
 		}
 		
 
