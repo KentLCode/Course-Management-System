@@ -1,0 +1,6 @@
+insert into Lecturer (LecturerID, UserName, FirstName,LastName, Password, Email ) values
+('1','STF124574','Idrees','Needham','ABD234585','ABD234585@lecturer.com'),
+('2','STF124575','Pearl ','Sharpe','ABD234586','ABD234586@lecturer.com'),
+('3','STF124576','Sami ','Singleton','ABD234587','ABD234587@lecturer.com'),
+('4','STF124577','Yasir ','Lim','ABD234588','ABD234588@lecturer.com'),
+('5','STF124578','Taliyah','Oakjohn','ABD234589','ABD234589@lecturer.com')

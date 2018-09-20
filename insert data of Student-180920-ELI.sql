@@ -1,0 +1,17 @@
+insert into Student (StudentID, UserName, FirstName,LastName,Password,Email,Nation) values
+('1', 'STU123456', 'Andrew', 'James','ABD234567','ABD234567@student.com','international'),
+('2', 'STU123457', 'Janet', 'James','ABD234568','ABD234568@student.com','international'),
+('3', 'STU123458', 'Peter', 'James','ABD234569','ABD234569@student.com','international'),
+('4', 'STU123459', 'Erin', 'James','ABD234570','ABD234570@student.com','international'),
+('5', 'STU123460', 'Francis', 'James','ABD234571','ABD234571@student.com','international'),
+('6', 'STU123461', 'Idrees', 'Needham','ABD234572','ABD234572@student.com','international'),
+('7', 'STU123462', 'Pearl', 'Sharpe','ABD234573','ABD234573@student.com','international'),
+('8', 'STU123463', 'George', 'Sharpe','ABD234574','ABD234574@student.com','international'),
+('9', 'STU123464', 'John', 'Singleton','ABD234575','ABD234575@student.com','domestic'),
+('10', 'STU123465', 'Paul', 'Singleton','ABD234576','ABD234576@student.com','domestic'),
+('11', 'STU123466', 'George', 'Singleton','ABD234577','ABD234577@student.com','domestic'),
+('12', 'STU123467', 'Ringo', 'Singleton','ABD234578','ABD234578@student.com','domestic'),
+('13', 'STU123468', 'Annie', 'Oakley','ABD234579','ABD234579@student.com','domestic'),
+('14', 'STU123469', 'Margaret', 'Oakley','ABD234580','ABD234580@student.com','domestic'),
+('15', 'STU123470', 'Mary', 'Oakley','ABD234581','ABD234581@student.com','domestic'),
+('16', 'STU123471', 'Paula', 'Oakley','ABD234582','ABD234582@student.com','domestic')
