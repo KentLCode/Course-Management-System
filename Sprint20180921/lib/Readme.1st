@@ -1,1 +1,6 @@
 This document records the changes made  to the files contained in this folder, who made the changes and what changes were made
+With respect to this:
+a. 'Course_management_system_db_create-MJL-180929.sql' is the latest database creation script for the Course Management System
+   See the embedded comments in this script as to the change. Last version 2018-09029-18:35 by Mike Little
+b. 'mysql-connector-java-8.0.12.jar' is an external mysql that is needed for the java application to connect to the  to the 
+   MySQL database.  
