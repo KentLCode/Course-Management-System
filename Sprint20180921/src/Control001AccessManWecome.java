@@ -19,13 +19,23 @@ public class Control001AccessManWecome
 * 
 * -------------------------------------------------------------------------
 * About the operation of this class and main method:
-* a.  
-* b.  
-* c. 
+* a.  A very simple constructor is used to configure this class.
+* b.  getAccessManWecome() calls the Bound001AccessManWecome class.
+* c.  This class will either call the Register Student control class, 
+*     or the login user control class.
 * 
 /*--------------------------------------------------------------------------
 * 
 */
+	/*--------------------------------------------------------------------------
+	 * 
+	 * CHANGE HISTORY:
+     * 20181001: First version created by Mike Little
+	 * 
+	 * 
+	 */
+	
+	
 ////////////////////////////////////////////////////////////////////////////////
 
 	
@@ -35,7 +45,8 @@ public class Control001AccessManWecome
 	// Here are the class variables for the:
 	// 1. This stores the user choice from the Boundary Class.
 	// 2. This coresponds to SUC00.1-Access CMS
-	// 3. 
+	// 3. If user chooses to register, it will call the control class for registration
+	// 4. if user chooses to login, it will call the control class for logging in.
 	
 	 private int userChoice;
 	 // This is a local class variable that stores the choice made
@@ -65,6 +76,22 @@ public class Control001AccessManWecome
 	*/
 		public void getAccessManWecome() 
 		{
+			Bound001AccessManWecome welcome_screen= new Bound001AccessManWecome();
+			userChoice=welcome_screen.getWelcChoice();
+			//System.out.println("the user has choosen:"+userChoice);
+			switch (userChoice)
+			{
+				case 1:
+					// user has choose to register as a student
+					// register user.
+					Control010RegisterStudent registerStudent  = new Control010RegisterStudent();
+					
+				case 2:
+					// user has chose to login.
+					// log user
+					Control011LoginUser logUser = new Control011LoginUser();
+			}
+			
 			
 		}// close getAccessManWecome()
 	

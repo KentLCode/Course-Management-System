@@ -1,3 +1,8 @@
+//import java.sql.*;
+//import java.util.*;
+//import java.sql.DriverManager;
+//import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Control010RegisterStudent 
 {
@@ -27,6 +32,58 @@ public class Control010RegisterStudent
 /*--------------------------------------------------------------------------
 * 
 */
+	
+	/*--------------------------------------------------------------------------
+	 * 
+	 * CHANGE HISTORY:
+     * 20181001: First version created by Mike Little
+	 * 
+	 * 
+	 */
+	
+	
+////////////////////////////////////////////////////////////////////////////////
+
+	//Define Class Attributes[Variables] Here
+	
+	// Here are the class variables for the:
+	// 1. This ...
+	// 2. This coresponds to SUC....
+	// 3. This ...
+	// 4. This ...
+	
+
+	 
+	 
+	 ///////////////////////////////////////////////////////////////////////////
+	 //Define Class Methods from here
+	//=========================================================================
+		// Define the constructor method
+		/*
+		*  Control010RegisterStudent()
+		*/		 
+		public Control010RegisterStudent()  
+		{
+			// This is the constructor for Control010RegisterStudent()
+			// Allows access to the class methods.
+
+		}// close Control010RegisterStudent() 	
+
+
+	//=========================================================================
+	// Define the getAccessManWecome() method
+	/*
+	*  getAccessManWecome()
+	*  This method calls the Boundary Class, and with the userChoice returned 
+	*  from the boundary class the registration details entered by the student
+	*  This is then used to populate the student database with new student details
+	*/
+		
+	public void registerStudent()
+	{
+		Bound010RegisterStudent registeredStudentDetails = new Bound010RegisterStudent();
+	}
+	
 ////////////////////////////////////////////////////////////////////////////////
 	
 } //close Control010RegisterStudent

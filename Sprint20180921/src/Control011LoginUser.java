@@ -1,3 +1,8 @@
+//import java.sql.*;
+//import java.util.*;
+//import java.sql.DriverManager;
+//import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Control011LoginUser 
 {
@@ -27,6 +32,53 @@ public class Control011LoginUser
 /*--------------------------------------------------------------------------
 * 
 */
+	
+	/*--------------------------------------------------------------------------
+	 * 
+	 * CHANGE HISTORY:
+     * 20181001: First version created by Mike Little
+	 * 
+	 * 
+	 */
+
+	////////////////////////////////////////////////////////////////////////////////
+
+	//Define Class Attributes[Variables] Here
+
+	// Here are the class variables for the:
+	// 1. This ...
+	// 2. This coresponds to SUC....
+	// 3. This ...
+	// 4. This ...
+	
+	 ///////////////////////////////////////////////////////////////////////////
+	 //Define Class Methods from here
+	//=========================================================================
+		// Define the constructor method
+		/*
+		*  Control011LoginUser()
+		*/		 
+		public Control011LoginUser()  
+		{
+			// This is the constructor for Control011LoginUser()
+			// Allows access to the class methods.
+
+		}// close Control011LoginUser() 	
+	
+
+		//=========================================================================
+		// Define the ...() method
+		/*
+		*  ..()
+		*   This method ... 
+		*  ...
+		*/
+		
+		public void LoginUser()
+		{
+			BoundC011LoginUser userLogin = new BoundC011LoginUser();
+			
+		}// end LoginUser()
 ////////////////////////////////////////////////////////////////////////////////
 	
 	

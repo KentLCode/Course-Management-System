@@ -82,11 +82,10 @@ public class EntityMySQLInteraction
 		*/		 
 		public EntityMySQLInteraction()  
 		{
-			// this creates the database connection
-			//Class.forName("com.mysql.cj.jdbc.Driver");
-			//connect=DriverManager.getConnection(url,username,password);
+			// This is the constructor for EntityMySQLInteraction()
+			// Allows access to the class methods.
 
-		}// close Game()	
+		}// close EntityMySQLInteraction() 	
 		
 		
 		
@@ -120,7 +119,7 @@ public class EntityMySQLInteraction
 			statement=connect.prepareStatement(sql);
 			sql_result=statement.executeQuery();
 			return sql_result;
-		}
+		}// close getResults()
 		
 		
 	

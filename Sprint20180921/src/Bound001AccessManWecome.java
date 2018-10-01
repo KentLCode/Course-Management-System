@@ -30,7 +30,7 @@ public class Bound001AccessManWecome
 	/*--------------------------------------------------------------------------
 	 * 
 	 * CHANGE HISTORY:
-     * 20181001: in progress..
+     * 20181001: First version created by Mike Little
 	 * 
 	 * 
 	 */
@@ -62,19 +62,15 @@ public class Bound001AccessManWecome
 			// Allows access to the class methods.
 
 		}// close Bound001AccessManWecome() 
-		
-		
-	//=========================================================================
-	// Define the validateWelcChoice(int choice)  method
-	/*
-	*  getWelcChoice()
-	*   This method returns back to the calling method the value 
-	*   of the choice made
-	*/			
-	
-	public int getWelcChoice() 
-	{
-		do 
+
+		//=========================================================================
+		// Define the display_screen() method
+		/*
+		*  display_screen()
+		*   This method validates the value entered are either 1, 2 
+		*   of the choice made
+		*/	
+		private void display_screen_intro() 
 		{
 			System.out.println("                  WELCOME TO THE MCGOWEN                   ");
 			System.out.println("                 COURSE MANAGEMENT SYSTEM                  ");
@@ -83,54 +79,71 @@ public class Bound001AccessManWecome
 			System.out.println("                                                           ");
 			System.out.println("                                                           ");
 			System.out.println("                                                           ");
+
+		}// end display_screen()
+		
+		private void display_screen_selection() 
+		{
+			System.out.println("                                                           ");
 			System.out.println(" What do you want to do? Choose Option:                    ");
 			System.out.println(" 1. Register as a New Student?                             ");
 			System.out.println(" 2. Log into our Course Management System?                 ");
 			System.out.println("                                                           ");
 			System.out.print(" Your Choice: ");
-			
-			Scanner sc = new Scanner (System.in);
-			int choice = sc.nextInt();
-			
+		}// end display_screen()		
+		
+		
+		
+		//=========================================================================
+		// Define the getWelcChoice() method
+		/*
+		*  getWelcChoice()
+		*   This method gets the welcome choice
+		*   of the choice made
+		*/		
+	
+	public int getWelcChoice() 
+	{
+		display_screen_intro();
+		display_screen_selection();
+		Scanner input1 = new Scanner (System.in);
+		int choice = input1.nextInt();
+		do 
+		{						
 			if (choice==1)
 			{
-				//return "true";
+				WelcChoice=1;
+				// User has chosen to register as a student
+				close_screen="Close";
 			}//end if (choice==1) 
+			
 			else if (choice==2) 
 			{
-				//return "true";
+				WelcChoice=2;
+				// User has chosen to Login
+				close_screen="Close";
+				
 			}// if (choice==2)
 			else if ((choice!=1 ) || (choice!=2))
 			{
-				//return "false";
+				System.out.println(" Wrong value entered, please choose 1 or 2 !                ");
+				//this is a kuldge as there is no way to refresh/clear the eclipse console
+				//and so I shall insert 200 new lines to clear the eclipse console
+				for (int lines=0; lines<200; lines++)
+				{
+					System.out.println("                                                           ");
+				}
+				
+				display_screen_selection();
+				Scanner input2 = new Scanner (System.in);
+				choice = input2.nextInt();
+				close_screen="no";
 			} 
 			
 		} while(close_screen!="Close");
-		
 
-		
-		//validateWelcChoice(choice);
-		WelcChoice=
 		return WelcChoice;
 		
-		
-		
 	}// close getWelcChoice()
-	
-	//=========================================================================
-	// Define the getWelcChoice() method
-	/*
-	*  validateWelcChoice(int choice)
-	*   This method validates the value entered are either 1, 2 
-	*   of the choice made
-	*/
-	
-
-			
-			
-	 
-	
-	
-	
 	
 }// close Bound001AccessManWecome

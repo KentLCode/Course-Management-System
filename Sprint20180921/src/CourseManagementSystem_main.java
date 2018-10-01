@@ -48,6 +48,19 @@ public class CourseManagementSystem_main
 		String query;
 		ResultSet result;
 		
+		// call the control for the welcome screen Control001AccessManWecome
+		// This control then calls the Bound001AccessManWecome class
+		// that retrieves the value. 
+		// If the user chooses to register then control will remain with
+		// Control001AccessManWecome.
+		// If the user chooses to login, then control will return 
+		// back to this main method.
+		
+		Control001AccessManWecome WecomeControl = new Control001AccessManWecome();
+		// call the control class for the welcome
+		WecomeControl.getAccessManWecome();
+		
+		
 
 		
 		

@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 public class Bound010RegisterStudent 
 {
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,13 +20,123 @@ public class Bound010RegisterStudent
 * 
 * -------------------------------------------------------------------------
 * About the operation of this class and main method:
-* a.  
-* b.  
+* a.  This class retrieves the student registration details
+* b.  it may need set..(), get..() for each of the variables..
 * c. 
 * 
 /*--------------------------------------------------------------------------
 * 
 */
+	
+	/*--------------------------------------------------------------------------
+	 * 
+	 * CHANGE HISTORY:
+     * 20181001: First version created by Mike Little
+	 * 
+	 * 
+	 */
+
+	
+	///////////////////////////////////////////////////////////////////////////
+	//Define Class Attributes[Variables] Here
+	
+	// Here are the class variables for the:
+	// 1. This stores the ...
+	// 2. This coresponds to SUC0..-...
+	// 3. 
+	private String StudentRegoFName;
+	private String StudentRegoLName;
+	private String StudentRegoEmail;
+	private String StudentRegoType;
+	
+
+	 ///////////////////////////////////////////////////////////////////////////
+	 //Define Class Methods from here
+	//=========================================================================
+		// Define the constructor method
+		/*
+		*  Bound010RegisterStudent() 
+		*/		 
+		public Bound010RegisterStudent()  
+		{
+			// This is the constructor for Bound001AccessManWecome()
+			// Allows access to the class methods.
+
+		}// close Bound010RegisterStudent()
+
+		//=========================================================================
+		// Define the ...() method
+		/*
+		*  ..()
+		*   This method ... 
+		*  ...
+		*/
+		
+		public void getStudentDetailsRegistered() 
+		{
+			// this method presents a form to get the student details for
+			// StudentRegoFName, StudentRegoLName, StudentRegoEmail, StudentRegoLType
+			// it will need separate accessor methods to retrieve the student
+			// first name, last name, email, and type.
+			
+			
+			
+			
+		}// end getStudentDetailsRegistered()
+		
+		//=========================================================================
+		// Define the ...() method
+		/*
+		*  ..()
+		*   This method ... 
+		*  ...
+		*/
+		public String getStudentRegoFName() 
+		{
+			// insert code from here...
+			return StudentRegoFName;
+		}// end getStudentRegoFName()
+
+		//=========================================================================
+		// Define the ...() method
+		/*
+		*  ..()
+		*   This method ... 
+		*  ...
+		*/
+		public String getStudentRegoLName() 
+		{
+			// insert code from here...
+			return StudentRegoLName;
+		}// end getStudentRegoLName()
+
+		//=========================================================================
+		// Define the ...() method
+		/*
+		*  ..()
+		*   This method ... 
+		*  ...
+		*/
+		public String getStudentRegoEmail() 
+		{
+			// insert code from here...
+			return StudentRegoEmail;
+		}// end getStudentRegoEmail()
+		
+		//=========================================================================
+		// Define the ...() method
+		/*
+		*  ..()
+		*   This method ... 
+		*  ...
+		*/
+		public String StudentRegoType() 
+		{
+			// insert code from here...
+			return StudentRegoType;
+		}// end StudentRegoType()		
+		
+
 ////////////////////////////////////////////////////////////////////////////////
 	
 }
