@@ -40,6 +40,14 @@ public class BoundC011LoginUser
 	private String userName;
 	private String userPassword;
 	
+	private String login_choice;
+	// this stores the results of the login process
+	// if successfully gets all the details for userName
+	// userPassword,and passes the validation [not null!]
+	// then login_choice="login"
+	// if the user decides not to login 
+	// then login_choice="not_to_login"
+	
 	 ///////////////////////////////////////////////////////////////////////////
 	 //Define Class Methods from here
 	//=========================================================================
@@ -54,12 +62,24 @@ public class BoundC011LoginUser
 
 		}// close BoundC011LoginUser() 	
 
-		public void getUserDetailsLogin() 
+		public String getUserDetailsLogin() 
 		{
 			// this method presents a form to get the user details for
 			// username and password
 			
 			// insert code from here...
+			//diagnostic..
+			//System.out.println("This is the BoundC011LoginUser() class");
+			// call the boundary class for getting the user details for login.
+			
+			// this stores the results of the login process
+			// if successfully gets all the details for userName
+			// userPassword,and passes the validation [not null!]
+			// then login_choice="login"
+			// if the user decides not to login 
+			// then login_choice="not_to_login"
+			return login_choice;
+			
 			
 		}// end getUserDetailsLogin() 
 		

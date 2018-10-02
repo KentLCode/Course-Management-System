@@ -125,15 +125,10 @@ public class Bound001AccessManWecome
 				
 			}// if (choice==2)
 			else if ((choice!=1 ) || (choice!=2))
+				
 			{
 				System.out.println(" Wrong value entered, please choose 1 or 2 !                ");
-				//this is a kuldge as there is no way to refresh/clear the eclipse console
-				//and so I shall insert 200 new lines to clear the eclipse console
-				for (int lines=0; lines<200; lines++)
-				{
-					System.out.println("                                                           ");
-				}
-				
+
 				display_screen_selection();
 				Scanner input2 = new Scanner (System.in);
 				choice = input2.nextInt();

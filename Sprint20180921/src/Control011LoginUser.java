@@ -50,6 +50,12 @@ public class Control011LoginUser
 	// 2. This coresponds to SUC....
 	// 3. This ...
 	// 4. This ...
+	private String login_result;
+	// this stores the results of the login process.
+	// this could be that the user provides all the login details
+	// then login_result="logged_in"
+	// if the user decides not to login 
+	// then login_result="not_to_login"
 	
 	 ///////////////////////////////////////////////////////////////////////////
 	 //Define Class Methods from here
@@ -74,9 +80,30 @@ public class Control011LoginUser
 		*  ...
 		*/
 		
-		public void LoginUser()
+		public String LoginUser()
 		{
 			BoundC011LoginUser userLogin = new BoundC011LoginUser();
+			//diagnostic..
+			//System.out.println("This is the Control011LoginUser() class");
+			// call the boundary class for getting the user details for login.
+			login_result=userLogin.getUserDetailsLogin();
+			
+			// this stores the results of the login process.
+			// this could be that the user provides all the login details
+			// then login_result="logged_in"
+			// if the user decides not to login 
+			// then login_result="not_to_login"
+			
+			
+			
+			// if login_result="logged_in"
+			
+			
+			
+			
+			// if login_result="not_to_login"
+			
+			return login_result;
 			
 		}// end LoginUser()
 ////////////////////////////////////////////////////////////////////////////////

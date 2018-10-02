@@ -44,11 +44,19 @@ public class Bound010RegisterStudent
 	// 1. This stores the ...
 	// 2. This coresponds to SUC0..-...
 	// 3. 
+
 	private String StudentRegoFName;
 	private String StudentRegoLName;
 	private String StudentRegoEmail;
 	private String StudentRegoType;
-	
+	private String registration_choice;
+	// this stores the results of the registration process
+	// if successfully gets all the details for registration
+	// StudentRegoFName, StudentRegoLName, StudentRegoEmail,
+	// StudentRegoType, and passes the validation [not null!]
+	// then registration_choice="register"
+	// if the user decides not to register 
+	// then registration_choice="not_register"
 
 	 ///////////////////////////////////////////////////////////////////////////
 	 //Define Class Methods from here
@@ -72,15 +80,19 @@ public class Bound010RegisterStudent
 		*  ...
 		*/
 		
-		public void getStudentDetailsRegistered() 
+		public String getStudentDetailsRegistered() 
 		{
 			// this method presents a form to get the student details for
 			// StudentRegoFName, StudentRegoLName, StudentRegoEmail, StudentRegoLType
 			// it will need separate accessor methods to retrieve the student
 			// first name, last name, email, and type.
 			
-			
-			
+			registration_choice="";
+			//set registration_results to a NULL value to clear any previous settings.
+			//diagnostic..
+			//System.out.println("This is the Bound010RegisterStudent() class");
+						
+			return registration_choice;
 			
 		}// end getStudentDetailsRegistered()
 		

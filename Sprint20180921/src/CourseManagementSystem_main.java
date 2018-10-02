@@ -45,8 +45,17 @@ public class CourseManagementSystem_main
 		// Here are the class variables for the:
 		// 1. The Query string passed to the entity class 'query';
 		// 2. The ResultSet 'result' that the query is returned.
+		
+		String access_result;
+		 // this is the variable that stores the result of the access
+		 // If access_result=="show_welcome", it will present the welcome screen
+		 // If access_result=="logged_in", it will create a new session for the user.
+		
 		String query;
+		// this variable holds the query that shall be passed to the entity class
 		ResultSet result;
+		// this variable holds the results returned from executing the query
+		// on the entity class.
 		
 		// call the control for the welcome screen Control001AccessManWecome
 		// This control then calls the Bound001AccessManWecome class
@@ -57,8 +66,40 @@ public class CourseManagementSystem_main
 		// back to this main method.
 		
 		Control001AccessManWecome WecomeControl = new Control001AccessManWecome();
-		// call the control class for the welcome
-		WecomeControl.getAccessManWecome();
+
+		
+		// may need a loop here..
+		access_result="";
+		do 
+		{
+			// call the control class for the welcome
+			// return the access_result to determine the result
+			access_result=WecomeControl.getAccessManWecome();
+			
+			//this is a kuldge as there is no way to refresh/clear the eclipse console
+			//and so I shall insert 200 new lines to clear the eclipse console
+			for (int lines=0; lines<200; lines++)
+			{
+				System.out.println("                                                           ");
+			}// end for (int lines=0; lines<200; lines++)
+			
+			 // If access_result=="show_welcome", it will present the welcome screen
+			if (access_result=="show_welcome")
+			{
+				access_result="";
+			}// end if (access_result=="show_welcome")
+		} while (access_result!="logged_in");
+		
+
+		
+	//	else if (access_result=="logged_in")
+			{
+			// insert code..	
+			} // end else if (access_result=="logged_in")
+		
+		
+		 // If access_result=="logged_in", it will create a new session for the user.
+		
 		
 		
 

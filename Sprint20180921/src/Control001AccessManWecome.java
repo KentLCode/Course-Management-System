@@ -50,6 +50,22 @@ public class Control001AccessManWecome
 	
 	 private int userChoice;
 	 // This is a local class variable that stores the choice made
+	 private String access_response;
+	 // this is a local class variable that operation response from either
+	 // register new student, or login user.
+	 // This will either be "register" "not_to_registered" or "logged_in"
+	 // If access_response is "registered"or "not_to_registered"
+
+	 private String access_outcome;
+	 /*this is the variable that stores the result of the access
+	  * 	If access_response is either be "register" or "not_to_registered"
+	  * 	then access_outcome=="show_welcome", it will present the welcome screen
+	  * 
+	  * 	If access_response is "logged_in"
+	  * 	then access_outcome=="logged_in"
+	  * 
+	  */	
+
 	 
 	 
 	 ///////////////////////////////////////////////////////////////////////////
@@ -74,27 +90,68 @@ public class Control001AccessManWecome
 	*  from the boundary class determines whether to hand control from this 
 	*  control class to the control class of Register Student or Login User
 	*/
-		public void getAccessManWecome() 
+		public String getAccessManWecome() 
 		{
 			Bound001AccessManWecome welcome_screen= new Bound001AccessManWecome();
 			userChoice=welcome_screen.getWelcChoice();
 			//System.out.println("the user has choosen:"+userChoice);
-			switch (userChoice)
+			//place holder for updated switching...
+			
+			if (userChoice==1)
 			{
-				case 1:
-					// user has choose to register as a student
-					// register user.
-					Control010RegisterStudent registerStudent  = new Control010RegisterStudent();
-					
-				case 2:
-					// user has chose to login.
-					// log user
-					Control011LoginUser logUser = new Control011LoginUser();
-			}
+				// user has choose to register as a student
+				// register user.
+				Control010RegisterStudent registerStudent  = new Control010RegisterStudent();
+				//call the control class for registering a student
+				access_response=registerStudent.registerStudent();
+				// maybe insert a break here after the student is registered??
+				// control should return to CourseManagementSystem_main..
+				// more coding tba...
+			} //end If (userChoice==1)
+			
+			else if (userChoice==2)
+			{
+				// user has chose to login.
+				// log user
+				Control011LoginUser logUser = new Control011LoginUser();
+				// call the control class for logging in an user
+				access_response=logUser.LoginUser();
+			} //end else if (userChoice==1)
+			
+			
+			// insert code to determine access_outcome
+			 /*this is the variable that stores the result of the access
+			  * 	If access_response is either be "register" or "not_to_registered"
+			  * 	then access_outcome=="show_welcome", it will present the welcome screen
+			  * 
+			  * 	If access_response is "logged_in"
+			  * 	then access_outcome=="logged_in"
+			  * 
+			  */
+			if ((access_response=="register")||(access_response=="not_to_registered"))
+			{
+				access_outcome="show_welcome";
+			}// end if ((access_response=="register")||(access_response=="not_to_registered"))
+		
+			if (access_response=="logged_in")
+			{
+				access_outcome="logged_in";
+			}// access_outcome="logged_in"
+			
+			return access_outcome;
+			
+		
 			
 			
 		}// close getAccessManWecome()
-	
+		//=========================================================================
+		// Define the access_response() method
+		/*
+		*  access_response()
+		*  This method retrieves the value of "access_response" 
+		*  If access_result=="show_welcome", it will present the welcome screen 
+		*  If access_result=="logged_in", it will create a new session for the user.
+		*/	
 	
 	
 }//close Control001AccessManWecome

@@ -51,6 +51,12 @@ public class Control010RegisterStudent
 	// 2. This coresponds to SUC....
 	// 3. This ...
 	// 4. This ...
+	private String registration_result;
+	// this stores the results of the registration process.
+	// this could be that the user provides all the registration details
+	// then registration_results="register"
+	// if the user decides not to register 
+	// then registration_results="not_register"
 	
 
 	 
@@ -79,9 +85,29 @@ public class Control010RegisterStudent
 	*  This is then used to populate the student database with new student details
 	*/
 		
-	public void registerStudent()
+	public String registerStudent()
 	{
 		Bound010RegisterStudent registeredStudentDetails = new Bound010RegisterStudent();
+		//diagnostic..
+		//System.out.println("This is the Control010RegisterStudent() class");
+		// call the boundary class for getting the student details for registration.
+		registration_result=registeredStudentDetails.getStudentDetailsRegistered();
+		// this could be that the user provides all the registration details
+		// then registration_results="register"
+		// if the user decides not to register 
+		// then registration_results="not_to_register"
+		
+		
+		
+		// if registration_result = "register"
+		
+		
+		
+		
+		// if registration_result = "not_to_register"
+		
+		return registration_result;
+
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
