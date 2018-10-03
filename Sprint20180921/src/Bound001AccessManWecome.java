@@ -64,6 +64,19 @@ public class Bound001AccessManWecome
 		}// close Bound001AccessManWecome() 
 
 		//=========================================================================
+		// Define the WelcChoice() method
+		/*
+		*  WelcChoice()
+		*   This method access the WelcChoice value.
+		*  ...
+		*/
+		public int WelcChoice() 
+		{
+			// insert code from here...
+			return WelcChoice;
+		}// end WelcChoice()	
+		
+		//=========================================================================
 		// Define the display_screen() method
 		/*
 		*  display_screen()
@@ -81,6 +94,13 @@ public class Bound001AccessManWecome
 			System.out.println("                                                           ");
 
 		}// end display_screen()
+		//=========================================================================
+		// Define the display_screen_selection() method
+		/*
+		*   display_screen_selection()
+		*   This method validates the value entered are either 1, 2 
+		*   of the choice made
+		*/	
 		
 		private void display_screen_selection() 
 		{
@@ -92,6 +112,39 @@ public class Bound001AccessManWecome
 			System.out.print(" Your Choice: ");
 		}// end display_screen()		
 		
+	
+		//=========================================================================
+		// Define the clear_console_screen() method
+		/*
+		*   clear_console_screen()
+		*   this is a kuldge as there is no way to refresh/clear the eclipse console
+		*   and so I shall insert 200 new lines to clear the eclipse console
+		*/	
+		private void clear_console_screen()
+		{
+			for (int lines=0; lines<200; lines++)
+			{
+				System.out.println("                                                           ");
+			}// end for (int lines=0; lines<200; lines++)
+			
+		}// end clear_console_screen()
+		
+		//=========================================================================
+		// Define the wrong_choice_error_message() method
+		/*
+		*   clear_wrong_choice_error_message()
+		*   this method presents an error message and goes to sleep for a period of time.
+		*/	
+		private void wrong_choice_error_message() throws InterruptedException 
+		{
+			
+				System.out.println("                                                           ");
+				System.out.println(" You have not correctly choosen option 1 or 2              ");
+				System.out.println("                                                           ");
+				System.out.println("                                                           ");
+				Thread.sleep(1000);
+			
+		}// end wrong_choice_error_message()		
 		
 		
 		//=========================================================================
@@ -102,42 +155,45 @@ public class Bound001AccessManWecome
 		*   of the choice made
 		*/		
 	
-	public int getWelcChoice() 
+	public void getWelcChoice() throws InterruptedException
 	{
 		display_screen_intro();
 		display_screen_selection();
 		Scanner input1 = new Scanner (System.in);
 		int choice = input1.nextInt();
-		do 
-		{						
+							
 			if (choice==1)
 			{
-				WelcChoice=1;
+				WelcChoice=1;;
+				//System.out.println("WelcChoice is:"+WelcChoice);
 				// User has chosen to register as a student
-				close_screen="Close";
+				//close_screen="Close";
 			}//end if (choice==1) 
 			
 			else if (choice==2) 
 			{
 				WelcChoice=2;
+				//System.out.println("WelcChoice is:"+WelcChoice);
 				// User has chosen to Login
-				close_screen="Close";
-				
+				//close_screen="Close";
 			}// if (choice==2)
 			else if ((choice!=1 ) || (choice!=2))
 				
 			{
-				System.out.println(" Wrong value entered, please choose 1 or 2 !                ");
-
+				//wrong_value_enter();
+				clear_console_screen();
+				wrong_choice_error_message();
+				clear_console_screen();
+				display_screen_intro();
 				display_screen_selection();
 				Scanner input2 = new Scanner (System.in);
 				choice = input2.nextInt();
-				close_screen="no";
+				
+				//close_screen="no";
 			} 
 			
-		} while(close_screen!="Close");
-
-		return WelcChoice;
+		//System.out.println("WelcChoice to be returned is:"+WelcChoice);	
+		
 		
 	}// close getWelcChoice()
 	

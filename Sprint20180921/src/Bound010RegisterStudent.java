@@ -80,7 +80,7 @@ public class Bound010RegisterStudent
 		*  ...
 		*/
 		
-		public String getStudentDetailsRegistered() 
+		public void getStudentDetailsRegistered() 
 		{
 			// this method presents a form to get the student details for
 			// StudentRegoFName, StudentRegoLName, StudentRegoEmail, StudentRegoLType
@@ -91,8 +91,8 @@ public class Bound010RegisterStudent
 			//set registration_results to a NULL value to clear any previous settings.
 			//diagnostic..
 			//System.out.println("This is the Bound010RegisterStudent() class");
-						
-			return registration_choice;
+			registration_choice="register";			
+			//return registration_choice;
 			
 		}// end getStudentDetailsRegistered()
 		
@@ -148,7 +148,18 @@ public class Bound010RegisterStudent
 			return StudentRegoType;
 		}// end StudentRegoType()		
 		
-
+		//=========================================================================
+		// Define the registration_choice() method
+		/*
+		*  registration_choice()
+		*   This method access the 
+		*  ...
+		*/
+		public String registration_choice() 
+		{
+			// insert code from here...
+			return registration_choice;
+		}// end registration_choice()	
 ////////////////////////////////////////////////////////////////////////////////
 	
 }

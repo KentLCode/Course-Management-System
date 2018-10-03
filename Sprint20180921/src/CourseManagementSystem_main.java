@@ -74,38 +74,34 @@ public class CourseManagementSystem_main
 		{
 			// call the control class for the welcome
 			// return the access_result to determine the result
-			access_result=WecomeControl.getAccessManWecome();
-			
-			//this is a kuldge as there is no way to refresh/clear the eclipse console
-			//and so I shall insert 200 new lines to clear the eclipse console
-			for (int lines=0; lines<200; lines++)
-			{
-				System.out.println("                                                           ");
-			}// end for (int lines=0; lines<200; lines++)
-			
-			 // If access_result=="show_welcome", it will present the welcome screen
-			if (access_result=="show_welcome")
-			{
-				access_result="";
-			}// end if (access_result=="show_welcome")
+			WecomeControl.getAccessManWecome();
+			access_result=WecomeControl.access_outcome();
+			clear_console_screen();
+
+
 		} while (access_result!="logged_in");
-		
+		System.out.println("out of the loop... log out..");
 
-		
-	//	else if (access_result=="logged_in")
-			{
-			// insert code..	
-			} // end else if (access_result=="logged_in")
-		
-		
-		 // If access_result=="logged_in", it will create a new session for the user.
-		
-		
-		
-
-		
+	
 		
 		
 	}// close the main method
+	
+	//=========================================================================
+	// Define the clear_console_screen() method
+	/*
+	*   clear_console_screen()
+	*   this is a kuldge as there is no way to refresh/clear the eclipse console
+	*   and so I shall insert 200 new lines to clear the eclipse console
+	*/	
+	static void clear_console_screen()
+	{
+		for (int lines=0; lines<200; lines++)
+		{
+			System.out.println("                                                           ");
+		}// end for (int lines=0; lines<200; lines++)
+		
+	}// end clear_console_screen()
+
 
 }// close class CourseManagementSystem_main

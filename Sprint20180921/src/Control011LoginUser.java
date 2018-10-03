@@ -71,39 +71,57 @@ public class Control011LoginUser
 
 		}// close Control011LoginUser() 	
 	
-
 		//=========================================================================
-		// Define the ...() method
+		// Define the login_result() method
 		/*
-		*  ..()
-		*   This method ... 
+		*  login_result()
+		*   This method access the 
+		*  ...
+		*/
+		public String login_result() 
+		{
+			// insert code from here...
+			return login_result;
+		}// end login_result()	
+		//=========================================================================
+		// Define the  LoginUser() method
+		/*
+		*   LoginUser()
+		*   This method  LoginUser 
 		*  ...
 		*/
 		
-		public String LoginUser()
+		public void LoginUser() throws InterruptedException
 		{
 			BoundC011LoginUser userLogin = new BoundC011LoginUser();
 			//diagnostic..
 			//System.out.println("This is the Control011LoginUser() class");
 			// call the boundary class for getting the user details for login.
-			login_result=userLogin.getUserDetailsLogin();
+			//do
+			//{
+				//System.out.println("This is the Control011LoginUser() class");
+				userLogin.getUserDetailsLogin();
+				login_result=userLogin.login_choice();
+				// this stores the results of the login process.
+				// this could be that the user provides all the login details
+				// then login_result="login"
+				// if the user decides not to login 
+				// then login_result="not_to_login"
+			//}
+			//while (login_result!="logged_in");
+
+
 			
-			// this stores the results of the login process.
-			// this could be that the user provides all the login details
-			// then login_result="logged_in"
-			// if the user decides not to login 
-			// then login_result="not_to_login"
 			
 			
-			
-			// if login_result="logged_in"
+			// if login_result="login"
 			
 			
 			
 			
 			// if login_result="not_to_login"
 			
-			return login_result;
+
 			
 		}// end LoginUser()
 ////////////////////////////////////////////////////////////////////////////////

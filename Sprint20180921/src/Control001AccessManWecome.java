@@ -82,6 +82,19 @@ public class Control001AccessManWecome
 
 		}// close Control001AccessManWecome 	
 
+		//=========================================================================
+		// Define the access_outcome() method
+		/*
+		*  access_outcome()
+		*   This method access the 
+		*  ...
+		*/
+		public String access_outcome() 
+		{
+			// insert code from here...
+			return access_outcome;
+		}// end raccess_response()	
+		
 	//=========================================================================
 	// Define the getAccessManWecome() method
 	/*
@@ -90,11 +103,11 @@ public class Control001AccessManWecome
 	*  from the boundary class determines whether to hand control from this 
 	*  control class to the control class of Register Student or Login User
 	*/
-		public String getAccessManWecome() 
+		public void getAccessManWecome() throws InterruptedException
 		{
 			Bound001AccessManWecome welcome_screen= new Bound001AccessManWecome();
-			userChoice=welcome_screen.getWelcChoice();
-			//System.out.println("the user has choosen:"+userChoice);
+			welcome_screen.getWelcChoice();
+			userChoice=welcome_screen.WelcChoice();
 			//place holder for updated switching...
 			
 			if (userChoice==1)
@@ -103,7 +116,8 @@ public class Control001AccessManWecome
 				// register user.
 				Control010RegisterStudent registerStudent  = new Control010RegisterStudent();
 				//call the control class for registering a student
-				access_response=registerStudent.registerStudent();
+				registerStudent.registerStudent();
+				access_response=registerStudent.registration_result();
 				// maybe insert a break here after the student is registered??
 				// control should return to CourseManagementSystem_main..
 				// more coding tba...
@@ -112,10 +126,11 @@ public class Control001AccessManWecome
 			else if (userChoice==2)
 			{
 				// user has chose to login.
-				// log user
 				Control011LoginUser logUser = new Control011LoginUser();
 				// call the control class for logging in an user
-				access_response=logUser.LoginUser();
+				logUser.LoginUser();
+				access_response=logUser.login_result();
+				
 			} //end else if (userChoice==1)
 			
 			
@@ -128,17 +143,20 @@ public class Control001AccessManWecome
 			  * 	then access_outcome=="logged_in"
 			  * 
 			  */
-			if ((access_response=="register")||(access_response=="not_to_registered"))
+			access_outcome="";
+			if ((access_response=="register")||(access_response=="not_to_registered")|(access_response=="not_to_login"))
 			{
 				access_outcome="show_welcome";
 			}// end if ((access_response=="register")||(access_response=="not_to_registered"))
 		
-			if (access_response=="logged_in")
+			if (access_response=="login")
 			{
 				access_outcome="logged_in";
 			}// access_outcome="logged_in"
 			
-			return access_outcome;
+			
+			//System.out.println("access_outcome:"+access_outcome);
+
 			
 		
 			

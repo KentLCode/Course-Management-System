@@ -75,24 +75,43 @@ public class Control010RegisterStudent
 
 		}// close Control010RegisterStudent() 	
 
-
+		
+		//=========================================================================
+		// Define the registration_result() method
+		/*
+		*  registration_choice()
+		*   This method access the 
+		*  ...
+		*/
+		public String registration_result() 
+		{
+			// insert code from here...
+			return registration_result;
+		}// end registration_result()	
+		
+		
 	//=========================================================================
-	// Define the getAccessManWecome() method
+	// Define the registerStudent() method
 	/*
-	*  getAccessManWecome()
-	*  This method calls the Boundary Class, and with the userChoice returned 
-	*  from the boundary class the registration details entered by the student
-	*  This is then used to populate the student database with new student details
+	*  registerStudent()
+	*  This method calls the Boundary Class, and if the accesor for the 
+	*  boudary class passes back registration_result = "register, the 
+	*  this class registers the details of the new student
+	*  by inserting a new row in the student table.
+	*  
+	*  If registration_results="not_to_register" then it will pass control back up
+	*  
 	*/
 		
-	public String registerStudent()
+	public void registerStudent()
 	{
 		Bound010RegisterStudent registeredStudentDetails = new Bound010RegisterStudent();
 		//diagnostic..
 		//System.out.println("This is the Control010RegisterStudent() class");
 		// call the boundary class for getting the student details for registration.
-		registration_result=registeredStudentDetails.getStudentDetailsRegistered();
+		registeredStudentDetails.getStudentDetailsRegistered();
 		// this could be that the user provides all the registration details
+		registration_result=registeredStudentDetails.registration_choice();
 		// then registration_results="register"
 		// if the user decides not to register 
 		// then registration_results="not_to_register"
@@ -106,7 +125,7 @@ public class Control010RegisterStudent
 		
 		// if registration_result = "not_to_register"
 		
-		return registration_result;
+		
 
 	}
 	
