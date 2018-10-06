@@ -1,9 +1,9 @@
 
 import java.sql.*;
-//import java.util.*;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Calendar;
 
 public class EntityMySQLInteraction 
 {
@@ -47,8 +47,12 @@ public class EntityMySQLInteraction
 	// 2. The Prepared statement
 	// 3. The ResultSet that is to be returned. 
  	private String sql;
- 	private Connection connect;
- 	private PreparedStatement statement;
+ 	private Connection connect_retrieve;
+ 	private Connection connect_insert;
+ 	private Connection connect_insert_date_time;
+ 	private PreparedStatement statement_retrieve;
+ 	private PreparedStatement statement_insert_date_time;
+ 	private Statement  statement_insert;
  	private ResultSet sql_result;
  	//this is the query string being passed in.
 	
@@ -115,11 +119,48 @@ public class EntityMySQLInteraction
 		*/		
 		public ResultSet getResults() throws Exception
 		{
-			connect=DriverManager.getConnection(url,username,password);
-			statement=connect.prepareStatement(sql);
-			sql_result=statement.executeQuery();
+			connect_retrieve=DriverManager.getConnection(url,username,password);
+			statement_retrieve=connect_retrieve.prepareStatement(sql);
+			sql_result=statement_retrieve.executeQuery();
 			return sql_result;
 		}// close getResults()
+		
+		
+		//=========================================================================
+		// Define the setInsertData() method
+		/*
+		*  getResults():
+		*  This method inserts data  MySQL database
+		*  
+		*/		
+		public void setInsertData() throws Exception
+		{
+			connect_insert=DriverManager.getConnection(url,username,password);
+			//statement_insert = connect_insert.createStatement();
+			statement_insert=connect_insert.prepareStatement(sql);
+			statement_insert.executeUpdate(sql);
+			connect_insert.close();
+		}// close setInsertData()
+
+		//=========================================================================
+		// Define the setInsertDateTime() method
+		/*
+		*  setInsertDateTime()
+		*  This method inserts date and time into  MySQL database
+		*  A typical quiery could be.. String query = "INSERT INTO datetests (date1) VALUES (?)";
+		*/		
+		public void setInsertDateTime() throws Exception
+		{
+			connect_insert_date_time=DriverManager.getConnection(url,username,password);
+			
+			// create a java sql date object we want to insert
+			Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		    statement_insert_date_time=connect_insert_date_time.prepareStatement(sql);
+		    statement_insert_date_time.setDate(1, ourJavaDateObject);
+			statement_insert_date_time.executeUpdate();
+			connect_insert_date_time.close();
+		}// close setInsertDateTime()
 		
 		
 	

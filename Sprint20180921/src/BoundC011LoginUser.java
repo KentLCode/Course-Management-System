@@ -52,6 +52,23 @@ public class BoundC011LoginUser
 	// if the user decides not to login 
 	// then login_choice="not_to_login"
 	
+	private Scanner input1;
+	//scanner input for Choice
+	
+	private Scanner userName_input;
+	private Scanner userName_input2;
+	private Scanner userName_input3;
+	private Scanner userName_input4;
+	//scanner input for userName input
+
+
+	private Scanner userPassword_input;
+	private Scanner userPassword_input2;
+	private Scanner userPassword_input3;
+	private Scanner userPassword_input4;
+	//scanner input for user Password.
+
+	
 	 ///////////////////////////////////////////////////////////////////////////
 	 //Define Class Methods from here
 	//=========================================================================
@@ -78,6 +95,30 @@ public class BoundC011LoginUser
 			// insert code from here...
 			return login_choice;
 		}// end raccess_response()	
+		
+		//=========================================================================
+		// Define the getuserName() method
+		/*
+		*  getuserName()
+		*   This method gets the user name and returns it back to the calling method
+		*/
+		public String getuserName() 
+		{
+			return userName;
+		}// end getuserName()
+
+		//=========================================================================
+		// Define the getuserPassword() method
+		/*
+		*  getuserPassword()
+		*   This method the user password and returns it back to the calling method 
+		*/
+		public String getuserPassword() 
+		{
+			// insert code from here...
+			return userPassword;
+		}// end getuserPassword()
+		
 		//=========================================================================
 		// Define the display_screen() method
 		/*
@@ -212,16 +253,16 @@ public class BoundC011LoginUser
 			display_screen_intro();
 			display_screen_selection();
 			//System.out.println("This is the BoundC011LoginUser() class");
-			Scanner input1 = new Scanner (System.in);
-			int choice = input1.nextInt();
+			input1 = new Scanner (System.in);
+			Choice = input1.nextInt();
 								
-				if (choice==1)
+				if (Choice==1)
 				{
 					//get login details.
 					//retrieve the userName details
 					clear_console_screen();
 					prompt_for_username();
-					Scanner userName_input= new Scanner(System.in);
+					userName_input= new Scanner(System.in);
 					userName= userName_input.nextLine();
 					//test the length of the user name is correct. 
 					if (validate_user_input(userName)=="Fail")
@@ -232,8 +273,8 @@ public class BoundC011LoginUser
 							wrong_choice_error_message("User name is not nine characters in length");
 							clear_console_screen();
 							prompt_for_username();
-							Scanner userName_input2= new Scanner(System.in);
-							userName= userName_input.nextLine();
+							userName_input2= new Scanner(System.in);
+							userName= userName_input2.nextLine();
 							//test the length of the user name is correct. 
 							validate_user_input(userName);
 						}
@@ -246,7 +287,7 @@ public class BoundC011LoginUser
 					//retrieve the userPassword details
 					clear_console_screen();
 					prompt_for_password() ;
-					Scanner userPassword_input= new Scanner(System.in);
+					userPassword_input= new Scanner(System.in);
 					userPassword=userPassword_input.nextLine();
 					//test the length of the password is correct. 
 					if (validate_user_input(userPassword)=="Fail")
@@ -257,28 +298,29 @@ public class BoundC011LoginUser
 							wrong_choice_error_message("Password is not nine characters in length");
 							clear_console_screen();
 							prompt_for_password() ;
-							Scanner userPassword_input2= new Scanner(System.in);
-							userPassword=userPassword_input.nextLine();
+							userPassword_input2= new Scanner(System.in);
+							userPassword=userPassword_input2.nextLine();
 							//test the length of the password is correct. 
 							validate_user_input(userPassword);
 						}
 						while (validate_user_input(userPassword)=="Fail");
 						// while is fails validation go around the loop
 					}//close the if statement
-					
-					
+					// declare a sucessful login operation
 					
 					login_choice="login";
 				}//end if (choice==1) 
 				
-				else if (choice==2) 
+				else if (Choice==2) 
 				{
+					
+					
 					//user has chosen not to login
 					//need to set login_choice="not_to_login"
 					login_choice="not_to_login";
 					
 				}// if (choice==2)
-				else if ((choice!=1 ) || (choice!=2))
+				else if ((Choice!=1 ) || (Choice!=2))
 					
 				{
 					//wrong_value_enter();
@@ -286,7 +328,7 @@ public class BoundC011LoginUser
 					wrong_choice_error_message("You have not chosen option 1 or 2");
 					display_screen_selection();
 					Scanner input2 = new Scanner (System.in);
-					choice = input2.nextInt();
+					Choice = input2.nextInt();
 					
 					//close_screen="no";
 				} 
@@ -304,31 +346,71 @@ public class BoundC011LoginUser
 		}// end getUserDetailsLogin() 
 		
 		//=========================================================================
-		// Define the ...() method
+		// Define wrong_username_or_passoword_reenter()  method
 		/*
-		*  ..()
-		*   This method ... 
-		*  ...
-		*/
-		public String getuserName() 
-		{
-			// insert code from here...
-			return userName;
-		}// end getuserName()
-
-		//=========================================================================
-		// Define the ...() method
-		/*
-		*  ..()
-		*   This method ... 
-		*  ...
-		*/
-		public String getuserPassword() 
-		{
-			// insert code from here...
-			return userPassword;
-		}// end getuserPassword()
+		*  	wrong username_or_passoword_reenter()
+		*   This method warn the user that they have entered the wrong user-name
+		*   or password, and prompt for the entry of the new user-name or password.
+		*   
+		*/		
 		
+		public void wrong_username_or_password_reenter() throws InterruptedException
+		{
+			clear_console_screen();
+			wrong_choice_error_message("Wrong user name or password entered, please re-enter!");
+			//get login details.
+			//retrieve the userName details
+			clear_console_screen();
+			prompt_for_username();
+			userName_input3= new Scanner(System.in);
+			userName= userName_input3.nextLine();
+			//test the length of the user name is correct. 
+			if (validate_user_input(userName)=="Fail")
+			{
+				do
+				{
+					clear_console_screen();
+					wrong_choice_error_message("User name is not nine characters in length");
+					clear_console_screen();
+					prompt_for_username();
+					userName_input4= new Scanner(System.in);
+					userName= userName_input4.nextLine();
+					//test the length of the user name is correct. 
+					validate_user_input(userName);
+				}
+				while (validate_user_input(userName)=="Fail");
+				// while is fails validation go around the loop
+			}//close the if statement
+
+			
+			//get login details.
+			//retrieve the userPassword details
+			clear_console_screen();
+			prompt_for_password() ;
+			userPassword_input3= new Scanner(System.in);
+			userPassword=userPassword_input3.nextLine();
+			//test the length of the password is correct. 
+			if (validate_user_input(userPassword)=="Fail")
+			{
+				do
+				{
+					clear_console_screen();
+					wrong_choice_error_message("Password is not nine characters in length");
+					clear_console_screen();
+					prompt_for_password() ;
+					userPassword_input4= new Scanner(System.in);
+					userPassword=userPassword_input4.nextLine();
+					//test the length of the password is correct. 
+					validate_user_input(userPassword);
+				}
+				while (validate_user_input(userPassword)=="Fail");
+				// while is fails validation go around the loop
+			}//close the if statement
+			// declare a sucessful login operation
+			
+			
+			
+		} // end wrong username_or_passoword_reenter()
 		
 		
 ////////////////////////////////////////////////////////////////////////////////
