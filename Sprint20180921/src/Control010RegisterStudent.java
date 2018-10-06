@@ -25,9 +25,17 @@ public class Control010RegisterStudent
 * 
 * -------------------------------------------------------------------------
 * About the operation of this class and main method:
-* a.  
-* b.  
-* c. 
+* This  this class operates in the following manner:
+a.  it has a constructor method, Control010RegisterStudent() 
+b.  it has a method to return  the results of registration, registration_result()
+c.  it has a method registerStudent()  that calls the boundary class
+    Bound010RegisterStudent,  and the method  in that class 
+    getStudentDetailsRegistered()
+d.  getStudentDetailsRegistered()  in this boundary class
+    collect the registration details   of the student
+e.   this class calls  the different access methods of  of the boundary class
+    Bound010RegisterStudent     in order to create an insert query
+     that inserts  the registration details of the student.
 * 
 /*--------------------------------------------------------------------------
 * 
@@ -51,12 +59,31 @@ public class Control010RegisterStudent
 	// 2. This coresponds to SUC....
 	// 3. This ...
 	// 4. This ...
+	private String registration_choice;
+	// this stores the choice made on the registration boundary 
+	// if user chooses to registration
+	// then registration_choice="registration"
+	// if the user decides not to registration 
+	// then login_choice="not_to_registration"
+
 	private String registration_result;
 	// this stores the results of the registration process.
 	// this could be that the user provides all the registration details
-	// then registration_results="register"
+	// then registration_results="registered"
 	// if the user decides not to register 
-	// then registration_results="not_register"
+	// then registration_results="not_registered"
+
+	private String RegisteredStudentFName;
+	private String RegisteredStudentLName;
+	private String RegisteredStudentEmail;
+	private String RegisteredStudentType;
+	
+	private String RegisteredStudentUsame;
+	private String RegisteredStudentPword;
+	
+	private String query;
+	// this stores the query being passed to the entity class to the database.
+
 	
 
 	 
@@ -103,31 +130,100 @@ public class Control010RegisterStudent
 	*  
 	*/
 		
-	public void registerStudent()
+	public void registerStudent() throws InterruptedException
 	{
 		Bound010RegisterStudent registeredStudentDetails = new Bound010RegisterStudent();
-		//diagnostic..
-		//System.out.println("This is the Control010RegisterStudent() class");
 		// call the boundary class for getting the student details for registration.
+		
 		registeredStudentDetails.getStudentDetailsRegistered();
 		// this could be that the user provides all the registration details
-		registration_result=registeredStudentDetails.registration_choice();
-		// then registration_results="register"
-		// if the user decides not to register 
-		// then registration_results="not_to_register"
 		
+		registration_choice="";
+		//clear our any previous value
+		registration_choice=registeredStudentDetails.registration_choice();
 		
-		
-		// if registration_result = "register"
-		
-		
-		
-		
-		// if registration_result = "not_to_register"
-		
-		
+		if (registration_choice=="register")
+		{
+			registration_result="";
+			//clear our any previous value
+			//insert registration code from here.
+			
+			//here you will need to retrieve
+			/*
+			 * 	private String StudentRegoFName;
+				private String StudentRegoLName;
+				private String StudentRegoEmail;
+				private String StudentRegoType;
+				private String registration_choice;
+			 *Useing their appropriate accessors
+			 * you will need to generate random six 
+			 * digit numbers to form the 
+			 * student userName, and Password
+			 * and pass this back to the boundary class to display
+			 *
+			 *
+			 */
+			
+			//retrieve the registeredStudentDetails from the boundary class
+			RegisteredStudentFName=registeredStudentDetails.getStudentRegoFName();
+			RegisteredStudentLName=registeredStudentDetails.getStudentRegoLName()  ;
+			RegisteredStudentEmail=registeredStudentDetails.getStudentRegoEmail()  ;
+			RegisteredStudentType=registeredStudentDetails.StudentRegoType()  ;
+			RegisteredStudentUsame=registeredStudentDetails.StudentRegoUsame() ;
+			RegisteredStudentPword=registeredStudentDetails.StudentRegoPword();
+			
+			String sess_RegisteredStudentUsame   =  "\'"  + RegisteredStudentUsame+  "\'";
+			String sess_RegisteredStudentFName   =  " \'" + RegisteredStudentFName+ "\' ";
+			String sess_RegisteredStudentLName   =  " \'" + RegisteredStudentLName+ "\' ";
+			String sess_RegisteredStudentPword   =  " \'" + RegisteredStudentPword+ "\' ";
+			String sess_RegisteredStudentEmail   =  " \'" + RegisteredStudentEmail+ "\' ";
+			String sess_RegisteredStudentType    =  " \'" + RegisteredStudentType + "\' ";
+											
 
-	}
+			query="insert into student"
+					+ "("
+						+ "StudentID, "
+						+ "UserName,"
+						+ "FirstName, "
+						+ "LastName,"
+						+ "Password, "
+						+ "Email, "
+						+ "Type"
+						+ ")"
+						+ "values"
+					+ "("
+							+ "NULL,"
+							+ sess_RegisteredStudentUsame +","
+							+ sess_RegisteredStudentFName+","
+							+ sess_RegisteredStudentLName+","
+							+ sess_RegisteredStudentPword+","
+							+ sess_RegisteredStudentEmail+","
+							+ sess_RegisteredStudentType
+						+ ")";
+
+			// create an instance of the EntityMySQLInteraction class
+			// to make a database connection.		
+			EntityMySQLInteraction dbConnect= new EntityMySQLInteraction();
+			dbConnect.setQuery(query);
+			try {
+				dbConnect.setInsertData();
+			} //end the try block
+			catch (Exception e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}//end the catch block
+		registration_result="registered";
+		}//end (registration_choice=="register")
+		
+		else if (registration_choice=="not_to_register")
+		{
+			registration_result="not_registered";
+		}//else if (registration_choice=="not_to_register")
+
+	
+
+	}//public void registerStudent() throws InterruptedException
 	
 ////////////////////////////////////////////////////////////////////////////////
 	
