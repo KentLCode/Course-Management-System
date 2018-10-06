@@ -1,3 +1,77 @@
-This document records the changes made  to the files contained in this folder, who made the changes and what changes were made
-EntityMySQLInteraction.java is my first database connection class... it now works and can be called from the main method, 
-but please feedback any changes,
+This document records the changes made  to the files contained in this folder, who made the changes and what changes were made.
+Changes made by Mike Little as of saturday 6th of october 2018:
+
+1. Control011LoginUser.java: 
+------------------------------------------------
+This class now has the following methods for and operation:
+a. login_result(): This method returns back to the calling method whether the login process 
+   is successful when the returned password matches the value passed in.
+b. getFirstName(): This method returns back to the calling method the FirstName of the
+   logged in user.
+c. getLastName(): This method returns back to the calling method the LastName of the
+   logged in user.
+d. getRole():  this method returns back to the calling method the role of the logged in user
+e. getYr_Sem():  this method returns back to the calling method  the semesterID of the current year and semester
+f. LoginUser():  this method performs the following:
+   i.  creates an instance of the  login user boundary class, BoundC011LoginUser()
+   ii.  calls the method 'getUserDetailsLogin()'  that is part of the  login user boundary class, BoundC011LoginUser()
+         to display  the login screen, which stores as local class variables the login.
+   iii.  it retrieves  using a  accessor method  that is part of BoundC011LoginUser() the  user name, and password 
+         that has been entered.
+   iv.    it creates an instance of the  entity class EntityMySQLInteraction(),  and using an  an array 
+          containing the names of the different  database tables such as student, lecturer, coordinator, administrator
+           it attempts to retrieve the password from each of these tables.  If the query returns a result, the 
+           number of rows return will be 1, indicating that it has found the corresponding password for the given
+            input username. It stores the corresponding tablename as a variable, called "role".
+   v.    it then compares the password that has been retrieved from the database against the password that has been entered,
+          if these match then it commences they process of logging in the user by creating an entry on the session table.
+           As part of this process,  it retrieves various  pieces of information from the table that it has found to contain
+            the corresponding  password,  such as 1st name, last name.
+   v.     it retrieves from the settings table the current semester ID, as that is a pointer on the semester table 
+          for the current  year  and semester.
+   vi.     it then creates a query to insert into the session table allthe relevant information.
+   vii.     it then inserts into the session table the day time stamp for the start of the session
+   
+   2. EntityMySQLInteraction.java
+   ------------------------------------
+   This class now has the following methods for and operation:
+   a. EntityMySQLInteraction():  this is the constructor method for this class.
+   b. setQuery(String query):  this method passes in the query from the calling method.
+   c. ResultSet getResults():  this method executes the query that has been passed in from a calling method,
+      and returns the results as a ResultSet  back to the calling method where it will be unpacked in that calling method.
+   d. void setInsertData():  this method  executes insert into,Update SQL  queries,  for example it is used in the   
+      Control011LoginUser  class to  create a new session entry on the session entry table,  and to
+       change the null value for the start date, and updated with the current start time stamp for the start of the session
+   e. void setInsertDateTime():  it appears this method will not need be needed,  and so it shall be deprecated.    
+   
+   3. BoundC011LoginUser.java
+   --------------------------------
+   This class now has the following methods for and operation:
+   a. public BoundC011LoginUser():  this is the constructor method for this class
+   b. public String login_choice():  this method returns  back to the calling method
+        the choice made by the user whether to login or not.
+   c. public String getuserName():  this method returns back to the calling method the username entered by the user
+   d. public String getuserPassword():  this method returns back to calling method the password entered by the user
+   e. private void display_screen_intro():  this method displays the top part of the introduction screen
+   f. private void display_screen_selection():  this method displays the options whether to login, or
+     return back to the welcome screen,  and prompts for the choice.
+   g. private void clear_console_screen():  as there is no dedicated process to refresh, clear the eclipse console
+          this method simply insert 200 lines to clear the eclipse console screen.
+   h. private void wrong_choice_error_message(String message) throws InterruptedException:
+       this method presents an error message and goes to sleep for a period of time.
+   i. private void prompt_for_username(): This prompts for the username
+   j. private void prompt_for_password(): This prompts for the user password
+   k. private String validate_user_input(String input): This validates the length of the user input being 9 characters
+   l. public void getUserDetailsLogin()throws InterruptedException: This method presents the user login details screen, 
+       It first presents the choice to login or return back to the welcome screen, of the choice made
+   m. public void wrong_username_or_password_reenter() throws InterruptedException: This method warn the user that they 
+      have entered the wrong user-name or password, and prompt for the entry of the new user-name or password.    
+       
+   
+   
+		  
+   
+         
+
+
+
