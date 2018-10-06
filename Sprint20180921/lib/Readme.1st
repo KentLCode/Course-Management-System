@@ -4,5 +4,9 @@ a. Course_management_system_db_create-MJL-181005-1659.sql is the latest database
    Main change was changes to the Session tabble for the start, and end date-time... changed from NOT NUll, to NUll. 
 B. 'Course_management_system_db_create-MJL-180929.sql' is the latest database creation script for the Course Management System
    See the embedded comments in this script as to the change. Last version 2018-09029-18:35 by Mike Little
-b. 'mysql-connector-java-8.0.12.jar' is an external mysql that is needed for the java application to connect to the  to the 
+c. 'mysql-connector-java-8.0.12.jar' is an external mysql that is needed for the java application to connect to the  to the 
    MySQL database.  
+d. 5. Database creation script updated by Mike Little, , 2018-10-06 22:41,
+	The updates to this script are:
+	5.1 Made the primary keys of STUDENT,LECTURER, ADMINISTRATOR, COORDINATOR
+	   ..int(255) unsigned auto_increment Not Null Primary Key   
