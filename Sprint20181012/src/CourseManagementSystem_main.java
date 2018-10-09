@@ -50,6 +50,9 @@ public class CourseManagementSystem_main
 		 // this is the variable that stores the result of the access
 		 // If access_result=="show_welcome", it will present the welcome screen
 		 // If access_result=="logged_in", it will create a new session for the user.
+		 // Once logged in, there is need for a loop that checks 
+		 // If access_result=="logged_out", it will close  the open session for the user
+		 
 		
 		String query;
 		// this variable holds the query that shall be passed to the entity class
@@ -64,6 +67,10 @@ public class CourseManagementSystem_main
 		// Control001AccessManWecome.
 		// If the user chooses to login, then control will return 
 		// back to this main method.
+		
+		String role;
+		// this stores the value of the role being returned back from 
+		// the query of the session table.
 		
 		Control001AccessManWecome WecomeControl = new Control001AccessManWecome();
 		
@@ -115,8 +122,117 @@ public class CourseManagementSystem_main
 
 
 		} while (access_result!="logged_in");
-		System.out.println("out of the loop... complete the login process from here.");
+
 		//complete the log in process
+		
+		/*
+		 * retrieve from the session table the role of the logged in user
+		 * select the role from the session table where the login_status= logged_in
+		 *  This is stored on the local variable 'role'
+		 */
+		query="select role from session where login_status="+ "\'logged_in\'";
+		role="";
+		// set initial state to NUL value.
+		dbConnect.setQuery(query);
+		try 
+		{
+			result=dbConnect.getResults();
+			while(result.next())
+			{
+				role=result.getString("Role");				
+				//store the value of the role
+			}//close while statement
+		}//end the try 
+		catch (Exception e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//end the catch
+		
+		
+		/*
+		 * Here we will have a do while loop
+		 * do
+		 * {
+		 *  .. code
+		 * } while (access_result!="logged_out");
+		 * This will loop around until 
+		 * it via an accessor method calling the 
+		 * relevant administrator_, coordinator_, lecturer_, student_ control/boundary 
+		 * class  changes access_result=="logged_out"
+		 * 
+		 * "student","lecturer", "coordinator", "administrator"
+		 * 
+		 */
+		do
+		{
+			//insert a switch
+			
+			if (role.equals("administrator"))
+			{	
+				// hand off to the administrator control and boundary class
+				// check the access_result from the administrator control
+				// if this has not changed from "logged_in" to "logged_out"
+				
+				//insert app code for "administrator"
+				
+				//diagnotic
+				System.out.println("hand off to the administrator control class");
+				
+				//break;
+			}// end if (role.equals("administrator"))
+			else if (role.equals("coordinator"))
+			{	
+				// hand off to the coordinator control and boundary class
+				// check the access_result from the coordinator control
+				// if this has not changed from "logged_in" to "logged_out"
+				
+				//insert app code for "coordinator"
+				
+				//diagnotic
+				System.out.println("hand off to the coordinator control class");
+				
+				//break;
+			}// end if (role.equals("coordinator"))	
+			
+			else if (role.equals("lecturer"))
+			{	
+				// hand off to the lecturer control and boundary class
+				// check the access_result from the lecturer control
+				// if this has not changed from "logged_in" to "logged_out"
+				
+				//insert app code for "lecturer"
+				
+				//diagnotic
+				System.out.println("hand off to the lecturer control class");
+				
+				//break;
+			}// end if (role.equals("lecturer"))	
+			
+			else if (role.equals("student"))
+			{	
+				// hand off to the student control and boundary class
+				// check the access_result from the student control
+				// if this has not changed from "logged_in" to "logged_out"
+				
+				//insert app code for "student"
+				
+				//diagnotic
+				System.out.println("hand off to the student control class");
+				
+				//break;
+			}// end if (role.equals("student"))
+			
+			
+		}while (access_result!="logged_out");
+		
+		// commence the logout process from here...
+		/*
+		 * change the  login_status in the session table from logged_in to logged_out
+		 * Update the End_Date_time with the date-time stamp of the session end
+		 * represent the welcome screen
+		 * 
+		 */
 
 	
 		
