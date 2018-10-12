@@ -6,6 +6,22 @@ import java.sql.ResultSet;
 
 public class CourseManagementSystem_main 
 {
+	//=========================================================================
+	// Define the clear_console_screen() method
+	/*
+	*   clear_console_screen()
+	*   this is a kuldge as there is no way to refresh/clear the eclipse console
+	*   and so I shall insert 200 new lines to clear the eclipse console
+	*/	
+	static void clear_console_screen()
+	{
+		for (int lines=0; lines<200; lines++)
+		{
+			System.out.println("                                                           ");
+		}// end for (int lines=0; lines<200; lines++)
+		
+	}// end clear_console_screen()
+	
      ////////////////////////////////////////////////////////////////////////////////
 	/*--------------------------------------------------------------------------
 	 * This is a project of Team Invicibles, 
@@ -71,6 +87,9 @@ public class CourseManagementSystem_main
 		String role;
 		// this stores the value of the role being returned back from 
 		// the query of the session table.
+		
+		String usName;
+		// this stores the user name of the user who has logged in.
 		
 		Control001AccessManWecome WecomeControl = new Control001AccessManWecome();
 		
@@ -174,10 +193,9 @@ public class CourseManagementSystem_main
 				// check the access_result from the administrator control
 				// if this has not changed from "logged_in" to "logged_out"
 				
-				//insert app code for "administrator"
-				
-				//diagnotic
-				System.out.println("hand off to the administrator control class");
+				Control020AdminCMS AdminCMSControl=new Control020AdminCMS();
+				AdminCMSControl.CMSApplicationAdministrationManagementControl();
+				access_result= AdminCMSControl.getLogout_choice();
 				
 				//break;
 			}// end if (role.equals("administrator"))
@@ -190,7 +208,7 @@ public class CourseManagementSystem_main
 				//insert app code for "coordinator"
 				
 				//diagnotic
-				System.out.println("hand off to the coordinator control class");
+				//System.out.println("hand off to the coordinator control class");
 				
 				//break;
 			}// end if (role.equals("coordinator"))	
@@ -218,7 +236,7 @@ public class CourseManagementSystem_main
 				//insert app code for "student"
 				
 				//diagnotic
-				System.out.println("hand off to the student control class");
+				//System.out.println("hand off to the student control class");
 				
 				//break;
 			}// end if (role.equals("student"))
@@ -233,27 +251,67 @@ public class CourseManagementSystem_main
 		 * represent the welcome screen
 		 * 
 		 */
+		usName="";
+		query="select UserName from session where login_status="+ "\'logged_in\'";
+		dbConnect.setQuery(query);
+		try 
+		{
+			result=dbConnect.getResults();
+			while(result.next())
+			{
+				usName=result.getString("UserName");				
+				//store the value of the role
+			}//close while statement
+		}//end the try 
+		catch (Exception e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//end the catch
+							
+		// now lets enter the data-time for the session 
+		// end time
+		java.util.Date dt = new java.util.Date();
+		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String currentTime = sdf.format(dt);
+		
+		
+		query="update session SET End_Date_time="+"\'"+ currentTime +"\'" 
+		+ "where login_status="+ "\'logged_in\'"
+		+ "and username       ="+"\'"+usName+"\'";
+			
+		
+		dbConnect.setQuery(query);
+		try {
+			dbConnect.setInsertData();
+		} //end the try block
+		catch (Exception e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//end the catch block
+		
+		//now change the status of the user from "logged in" to logged out"
+		
+		
+		query="update session SET login_status=" + "\'logged_out\'"    
+				+ "where login_status="+ "\'logged_in\'"
+				+ "and username       ="+"\'"+usName+"\'";	
+		
+		dbConnect.setQuery(query);
+		try {
+			dbConnect.setInsertData();
+		} //end the try block
+		catch (Exception e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//end the catch block
+		
 
 	
 		
 		
 	}// close the main method
-	
-	//=========================================================================
-	// Define the clear_console_screen() method
-	/*
-	*   clear_console_screen()
-	*   this is a kuldge as there is no way to refresh/clear the eclipse console
-	*   and so I shall insert 200 new lines to clear the eclipse console
-	*/	
-	static void clear_console_screen()
-	{
-		for (int lines=0; lines<200; lines++)
-		{
-			System.out.println("                                                           ");
-		}// end for (int lines=0; lines<200; lines++)
-		
-	}// end clear_console_screen()
-
 
 }// close class CourseManagementSystem_main
